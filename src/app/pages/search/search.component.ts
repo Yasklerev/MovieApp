@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Movie } from 'src/app/models/allObjects';
 import { MoviesService } from 'src/app/services/movies.service';
 
@@ -13,7 +13,8 @@ export class SearchComponent implements OnInit {
   public search = '';
   constructor(
     private activatedRoute: ActivatedRoute,
-    private moviesService: MoviesService
+    private moviesService: MoviesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,5 +30,9 @@ export class SearchComponent implements OnInit {
           this.movies = dataMovies;
         });
     });
+  }
+
+  onMovieClick(id: string): void {
+    this.router.navigate(['movie', id]);
   }
 }

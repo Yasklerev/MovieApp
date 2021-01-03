@@ -1,10 +1,14 @@
 <h3>Término buscado: {{ search }}</h3>
-<hr>
+<hr />
 
 <div class="row center-xs">
   <div class="col-xs-3" *ngFor="let item of movies">
     <div class="box">
-      <img class="imgs" [src]="item.poster_path | poster" />
+      <img
+        (click)="onMovieClick(item.id)"
+        class="imgs"
+        [src]="item.poster_path | poster"
+      />
 
       <h3>{{ item.title }}</h3>
       <div class="row info-movie">

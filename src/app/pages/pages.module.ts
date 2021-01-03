@@ -6,9 +6,16 @@ import { SearchComponent } from './search/search.component';
 import { ComponentsModule } from '../components/components.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { RatingModule } from 'ng-starrating';
+import { AngularMaterialModule } from '../angular.material.module';
 
 @NgModule({
   declarations: [HomeComponent, MovieComponent, SearchComponent],
-  imports: [CommonModule, ComponentsModule, PipesModule, RatingModule],
+  imports: [
+    CommonModule,
+    ComponentsModule,
+    PipesModule,
+    RatingModule,
+    AngularMaterialModule,
+  ],
 })
 export class PagesModule {}
