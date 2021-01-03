@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from 'src/app/models/allObjects';
 @Component({
   selector: 'app-movies-poster-grid',
@@ -8,7 +9,12 @@ import { Movie } from 'src/app/models/allObjects';
 export class MoviesPosterGridComponent implements OnInit {
   @Input() movies: Movie[];
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  onMovieClick(id: string): void {
+    // const { id } = this.activatedRoute.snapshot.params;
+    this.router.navigate(['movie', id]);
+  }
 }

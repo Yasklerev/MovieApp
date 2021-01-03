@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 
 import { tap, map } from 'rxjs/operators';
 import { Data, Movie } from '../models/allObjects';
+import { MovieDetails } from '../models/movieResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,6 @@ export class MoviesService {
   }
 
   resetBillboardPage(): void {
-    console.log('Se ejecuta ngOnDestroy desde el servicio');
     this.billboard = 1;
   }
 
@@ -56,5 +56,11 @@ export class MoviesService {
         params,
       })
       .pipe(map((data) => data.results));
+  }
+
+  getMovieDetails(id: string): Observable<MovieDetails> {
+    return this.httpClient.get<MovieDetails>(`${this.baseUrl}/movie/${id}`, {
+      params: this.params,
+    });
   }
 }

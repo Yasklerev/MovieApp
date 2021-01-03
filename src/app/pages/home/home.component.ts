@@ -52,7 +52,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('Se ejecuta ngOnDestroy');
     this.moviesService.resetBillboardPage();
   }
 }
