@@ -24,6 +24,11 @@ export class MoviesService {
     };
   }
 
+  resetBillboardPage(): void {
+    console.log('Se ejecuta ngOnDestroy desde el servicio');
+    this.billboard = 1;
+  }
+
   getMovie(): Observable<Movie[]> {
     if (this.loading) {
       return of([]);
