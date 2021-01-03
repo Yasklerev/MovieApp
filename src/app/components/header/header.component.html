@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <span>MovieApp</span>
+
+  <button routerLink="home" class="button-header-left" mat-raised-button>
+    <mat-icon>home</mat-icon><small> Home </small>
+  </button>
+  <button
+    routerLink="movie/:1"
+    class="button-header-left-after"
+    mat-raised-button
+  >
+    <mat-icon>theaters</mat-icon><span> Movie </span>
+  </button>
+  <span class="example-spacer"></span>
+  <div>
+    <input
+      class="form-search"
+      #txtSearch
+      (keyup.enter)="search(txtSearch.value)"
+      autocomplete="off"
+      type="text"
+      placeholder="Buscar película..."
+      name="search"
+    />
+  </div>
+</mat-toolbar>

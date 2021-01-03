@@ -1,0 +1,29 @@
+<h3>Término buscado: {{ search }}</h3>
+<hr>
+
+<div class="row center-xs">
+  <div class="col-xs-3" *ngFor="let item of movies">
+    <div class="box">
+      <img class="imgs" [src]="item.poster_path | poster" />
+
+      <h3>{{ item.title }}</h3>
+      <div class="row info-movie">
+        <div class="col-xs-9">
+          <div style="text-align: center">
+            <star-rating
+              [value]="item.vote_average"
+              totalstars="10"
+              checkedcolor="black"
+              uncheckedcolor="white"
+              size="14px"
+              readonly="false"
+            ></star-rating>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          {{ item.vote_average | number: "1.1-1" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
