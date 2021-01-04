@@ -10,9 +10,15 @@ import { MoviesPosterGridComponent } from './movies-poster-grid/movies-poster-gr
 
 import { RatingModule } from 'ng-starrating';
 import { PipesModule } from '../pipes/pipes.module';
+import { CastSlideshowComponent } from './cast-slideshow/cast-slideshow.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SwiperComponent, MoviesPosterGridComponent],
+  declarations: [
+    HeaderComponent,
+    SwiperComponent,
+    MoviesPosterGridComponent,
+    CastSlideshowComponent,
+  ],
   imports: [
     CommonModule,
     AngularMaterialModule,
@@ -21,6 +27,11 @@ import { PipesModule } from '../pipes/pipes.module';
     RatingModule,
     PipesModule,
   ],
-  exports: [HeaderComponent, SwiperComponent, MoviesPosterGridComponent],
+  exports: [
+    HeaderComponent,
+    SwiperComponent,
+    MoviesPosterGridComponent,
+    CastSlideshowComponent,
+  ],
 })
 export class ComponentsModule {}

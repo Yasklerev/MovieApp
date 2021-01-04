@@ -23,6 +23,14 @@
       ></star-rating>
       {{ movie.vote_average }}
     </div>
+
+    <div class="box">
+      <app-cast-slideshow
+        *ngIf="cast"
+        [cast]="cast"
+      ></app-cast-slideshow>
+    </div>
+
     <div class="box">
       <button mat-raised-button (click)="goBack()">Volver</button>
     </div>

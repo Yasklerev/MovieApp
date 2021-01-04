@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public moviesSlideshow: Movie[] = [];
 
   @HostListener('window:scroll', ['$event'])
-  onScroll() {
+  onScroll(): void {
     const position =
       document.documentElement.scrollTop + 700 || document.body.scrollTop + 700;
     const max =

@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 import { Cast } from 'src/app/models/creditsMovie';
 import { MovieDetails } from 'src/app/models/movieResponse';
 import { MoviesService } from 'src/app/services/movies.service';
@@ -23,23 +24,29 @@ export class MovieComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.params.id;
-    this.moviesService.getMovieDetails(id).subscribe((data) => {
-      if (!data) {
-        console.log('El objeto no existe!');
-        this.router.navigateByUrl('/home');
-        return;
+
+    combineLatest([
+      this.moviesService.getMovieDetails(id),
+      this.moviesService.getCreditsDetails(id),
+    ]).subscribe(
+      ([movieData, castData]) => {
+        if (!movieData) {
+          this.router.navigateByUrl('/home');
+          return;
+        }
+        this.movie = movieData;
+
+        if (!castData) {
+          this.router.navigateByUrl('/home');
+          return;
+        }
+        this.cast = castData.filter((data) => data.profile_path);
+      },
+      (err) => {
+        console.warn('Hubo un error!');
+        console.warn(err);
       }
-      this.movie = data;
-    });
-    this.moviesService.getCreditsDetails(id).subscribe((data) => {
-      if (!data) {
-        console.log('El objeto no existe!');
-        this.router.navigateByUrl('/home');
-        return;
-      }
-      this.cast = data;
-      console.log(data);
-    });
+    );
   }
 
   goBack(): void {
