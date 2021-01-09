@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @HostListener('window:scroll', ['$event'])
   onScroll(): void {
     const position =
-      document.documentElement.scrollTop + 700 || document.body.scrollTop + 700;
+      document.documentElement.scrollTop + 1100 || document.body.scrollTop + 1100;
     const max =
       document.documentElement.scrollHeight || document.body.scrollHeight;
     if (position > max) {

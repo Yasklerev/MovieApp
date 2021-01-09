@@ -1,8 +1,16 @@
 <div *ngIf="movie" class="row center-xs">
-  <div class="col-xs-6">
-    <div class="box">La película que buscaste</div>
+  <div class="col-xs-12">
     <div class="box">
-      <img [src]="movie.poster_path | poster" [alt]="movie.original_title" />
+
+      <mat-card class="card-search">
+        <mat-card-title>
+          Detalles de tu película
+        </mat-card-title>
+      </mat-card>
+
+    </div>
+    <div class="box">
+      <img class="img-search" [src]="movie.poster_path | poster" [alt]="movie.original_title" />
     </div>
   </div>
   <div class="col-xs-6">
@@ -12,6 +20,7 @@
     <div class="box">
       {{ movie.overview }}
     </div>
+    <br />
     <div class="box">
       <star-rating
         [value]="movie.vote_average"
@@ -23,16 +32,14 @@
       ></star-rating>
       {{ movie.vote_average }}
     </div>
-
+    <br />
     <div class="box">
-      <app-cast-slideshow
-        *ngIf="cast"
-        [cast]="cast"
-      ></app-cast-slideshow>
+      <app-cast-slideshow *ngIf="cast" [cast]="cast"></app-cast-slideshow>
     </div>
-
+    <br>
     <div class="box">
-      <button mat-raised-button (click)="goBack()">Volver</button>
+      <button mat-raised-button (click)="goBack()" class="goBack">Volver</button>
+      <br /><br />
     </div>
   </div>
 </div>
